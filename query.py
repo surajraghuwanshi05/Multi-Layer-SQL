@@ -1,15 +1,8 @@
 import mysql.connector
 import pandas as pd
 import matplotlib.pyplot as plt
+from create import create_connection
 
-# Create MySQL connection
-def create_connection():
-    return mysql.connector.connect(
-        host="localhost",    # e.g., "localhost"
-        user="root",    # e.g., "root"
-        password="suraj@123",  # Your MySQL password
-        database="test"  # Your database name
-    )
 
 conn = create_connection()
 

@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from query import create_connection
+from create import create_connection
 
 
 
@@ -26,6 +26,20 @@ def fetch_table_data(query):
 st.title("Welcome to the Sales Insights and Analytics Dashboard!")
 
 st.markdown("""
+### Scenario: Business Struggling with Data Overload​
+
+a growing retail business is dealing with massive amounts of sales data coming in from different sources—online stores, physical outlets, and third-party marketplaces. Every day, they receive raw sales data in different formats and from various locations.​
+
+The problem they face is that this data is unstructured and messy, making it difficult to extract valuable insights. They want to answer questions like:​
+
+- What are the top-selling products across different regions?​
+
+- How are monthly sales trending over time?​
+
+- Which customer segment is contributing the most to revenue?​
+
+- Which teams or locations are underperforming?"            
+
 ### Overview
 
 This application provides a comprehensive platform for analyzing sales and customer data,

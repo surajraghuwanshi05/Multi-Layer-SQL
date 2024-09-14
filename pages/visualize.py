@@ -3,14 +3,7 @@ import mysql.connector
 import pandas as pd
 from query import *
 
-# # Set up MySQL connection
-# def create_connection():
-#     return mysql.connector.connect(
-#         host="localhost",    # e.g., "localhost"
-#         user="root",    # e.g., "root"
-#         password="suraj@123",  # Your MySQL password
-#         database="test"  # Your database name
-#     )
+
 
 conn = create_connection()
 
@@ -48,7 +41,7 @@ analysis = st.selectbox(
     ]
 )
 
-if st.button("show Dashboard"):
+if st.button("show Graph"):
     # Run the selected analysis
     # if analysis == "Total Sales by Category":
     #     result = total_sales_by_category_plot()
