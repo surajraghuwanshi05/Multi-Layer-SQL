@@ -1,7 +1,7 @@
 import mysql.connector
 import pandas as pd
 import matplotlib.pyplot as plt
-from create import create_connection
+from bronze import create_connection
 
 
 conn = create_connection()
@@ -36,7 +36,7 @@ def top_10_best_selling_items():
     FROM gold_fact_sales AS S
     LEFT JOIN gold_dim_items AS I ON S.Item_sk = I.Item_id
     GROUP BY Item_name 
-    ORDER BY Quantity_per_item DESC
+    ORDER BY Quantity_per_item DESC 
     LIMIT 10;
     """
     return run_query(query)
@@ -182,11 +182,13 @@ def top_10_best_selling_items_plot():
 def monthly_sales_trend_plot():
     query = """
     SELECT SUM(Total_amount) AS Revenue_per_month, 
-           MONTHNAME(Date) AS MONTH
-    FROM gold_fact_sales 
-    WHERE Date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
-    GROUP BY MONTH
-    ORDER BY Revenue_per_month DESC;
+       MONTHNAME(Date) AS MONTH,
+       MONTH(Date) AS Month_Number
+FROM gold_fact_sales 
+WHERE Date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+GROUP BY MONTH, Month_Number
+ORDER BY Month_Number;
+
     """
     
     # Run the query
@@ -289,7 +291,7 @@ def revenue_contribution_by_membership_status_plot():
     df = run_query(query)
     
     # Create the figure and axes
-    fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(10, 6))
     
     # Create the pie chart
     ax.pie(df['Revenue_per_membership'], labels=df['Membership_status'], autopct='%1.1f%%', startangle=90)

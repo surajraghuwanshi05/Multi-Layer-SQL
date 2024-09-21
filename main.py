@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from create import create_connection
+from bronze import create_connection
 
 
 
@@ -26,26 +26,18 @@ def fetch_table_data(query):
 st.title("Welcome to the Sales Insights and Analytics Dashboard!")
 
 st.markdown("""
-### Scenario: Business Struggling with Data Overload​
+A retail business receives messy sales data from various sources—online stores, outlets, and marketplaces. They need help answering key questions like:
 
-a growing retail business is dealing with massive amounts of sales data coming in from different sources—online stores, physical outlets, and third-party marketplaces. Every day, they receive raw sales data in different formats and from various locations.​
-
-The problem they face is that this data is unstructured and messy, making it difficult to extract valuable insights. They want to answer questions like:​
-
-- What are the top-selling products across different regions?​
-
-- How are monthly sales trending over time?​
-
-- Which customer segment is contributing the most to revenue?​
-
-- Which teams or locations are underperforming?"            
+- What are the top-selling products?
+- How are monthly sales trending?
+- Which customer segments drive the most revenue?
+- Which locations or teams are underperforming?            
 
 ### Overview
 
-This application provides a comprehensive platform for analyzing sales and customer data,
- offering valuable insights into key business metrics. Built using a multi-layer architecture (Bronze, Silver, and Gold layers),
- this app integrates data from various sources and allows you to interactively explore critical sales information.
- Below, you'll find details about the Structure. These layers form the foundation for the insights and metrics you can explore through this application.
+This diagram shows how data is organized in different stages. 
+             the Bronze Layer, Silver Layer,  Gold Layer and 
+             Presentation Layer.
 
 
 """)
@@ -54,3 +46,18 @@ This application provides a comprehensive platform for analyzing sales and custo
 
 image_path = 'layers.png' 
 st.image(image_path, caption='Multi layer structure', use_column_width=True)
+
+
+st.markdown("""
+           
+### Database Schema Overview
+
+This retail business database schema consists of four key tables:
+             sales, customers, locations, and items. Each table is interconnected to track and analyze sales data across different locations,
+             products, and customers.
+
+
+""")
+
+image_path2 = 'schema.png' 
+st.image(image_path2, caption=' Relationship between Sales, Customers, Locations, and Items', use_column_width=True)

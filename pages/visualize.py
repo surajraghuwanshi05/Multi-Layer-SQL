@@ -2,8 +2,7 @@ import streamlit as st
 import mysql.connector
 import pandas as pd
 from query import *
-
-
+from bronze import create_connection
 
 conn = create_connection()
 
